@@ -1,5 +1,6 @@
+# coding: utf-8
+
 begin
-  $KCODE = 'u'
   require 'rubygems'
   require 'active_support'
 rescue LoadError
@@ -54,7 +55,7 @@ You can use for example User.find_by_param(params[:id], args) to find the user b
 
           if self.column_names.include?(options[:field].to_s)
             options[:param] = options[:field]
-            before_validation_on_create :save_permalink
+            before_validation :save_permalink, :on => :create
           end
 
           self.permalink_options = options
